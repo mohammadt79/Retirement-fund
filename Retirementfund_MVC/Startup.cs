@@ -12,15 +12,17 @@ using Microsoft.Extensions.Hosting;
 using  Microsoft.EntityFrameworkCore;
 using Retirementfund_MVC.Data;
 
+
 namespace Retirementfund_MVC
 {
     public class Startup
     {
+        public string ConnectionString { get; set; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            ConnectionString = Configuration.GetConnectionString("DefaultConnection");
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -29,7 +31,8 @@ namespace Retirementfund_MVC
             services.AddControllersWithViews();
             services.AddDbContext<DataContext>(options =>
             
-                options.UseSqlServer("name=ConnectionStrings:DefultConection")
+                options.UseSqlServer(ConnectionString)
+
             );
         }
 
