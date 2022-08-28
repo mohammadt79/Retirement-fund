@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using  Microsoft.EntityFrameworkCore;
+using Retirementfund_MVC.Data;
 
 namespace Retirementfund_MVC
 {
@@ -24,6 +27,10 @@ namespace Retirementfund_MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<DataContext>(options =>
+            
+                options.UseSqlServer("name=ConnectionStrings:DefultConection")
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

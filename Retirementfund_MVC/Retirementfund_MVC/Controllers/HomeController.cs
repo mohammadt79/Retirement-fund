@@ -22,8 +22,9 @@ namespace Retirementfund_MVC.Controllers
         {
             return View();
         }
+       
 
-        public IActionResult Privacy()
+        public IActionResult RegisterRequest()
         {
             return View();
         }
