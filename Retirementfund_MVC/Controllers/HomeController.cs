@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Retirementfund_MVC.Models;
 using Retirementfund_MVC.Data;
+using ser
 
 namespace Retirementfund_MVC.Controllers
 {
@@ -26,7 +27,11 @@ namespace Retirementfund_MVC.Controllers
         }
         public IActionResult Index()
         {
-           var s=_context.TheConferenceModel.Select(x=>x).ToList;
+            var response = new List<TheConferenceModel>()
+            {
+                Data =  _context.TheConferenceModel.ToList()
+            };
+            var ss=_context.TheConferenceModel.Select(x=>x).ToList;
             return View();
         }
        
