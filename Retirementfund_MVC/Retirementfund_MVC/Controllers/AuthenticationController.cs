@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Retirementfund_MVC.Data;
 using Retirementfund_MVC;
 
+
 namespace Retirementfund_MVC.Controllers
 {
     public class AuthenticationController : Controller
@@ -15,16 +16,22 @@ namespace Retirementfund_MVC.Controllers
         {
             _context = context;
         }
+        [HttpGet]
+        public IActionResult Signin()
+        {
+            return View();    
+        }
         [HttpPost]
         public ActionResult Signin(LoginView login)
         {
             try
             {
 
-              var userInfo=  _context.Users.Where(s=>s.Email==login.Email && s.Pass==login.Pass);
+             var userInfo= _context.Users.Where(s=>s.Email==login.Email && s.Pass==login.Pass).ToList();
                 if(userInfo != null)
                 {
-
+                    HttpContext.Response.Cookies.Append("access_token", , new CookieOptions { HttpOnly = true });
+                    userInfo[0].Admin;   
                 }
                 return Redirect("");
             }
