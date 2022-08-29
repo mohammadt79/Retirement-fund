@@ -1,8 +1,7 @@
 ﻿@{
     Layout = null;
 }
-
-
+@model Users
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
@@ -43,30 +42,30 @@
                         <div class="p-4">
 
                             <h1 class="mb-3 text-18 text-center">ثبت نام</h1>
-                            <form action="">
+                            <form  asp-action="SignUp" >
                                 <div class="form-group">
                                     <label for="username" style="float:right ;">نام</label>
-                                    <input id="username" class="form-control form-control-rounded" type="text">
+                                    <input asp-for="FirstName" class="form-control form-control-rounded" type="text">
                                 </div>
                                 <div class="form-group">
                                     <label for="username" style="float:right ;">نام خانوادگی</label>
-                                    <input id="username" class="form-control form-control-rounded" type="text">
+                                    <input asp-for="LastName" class="form-control form-control-rounded" type="text">
                                 </div>
                                 <div class="form-group">
                                     <label for="email" style="float:right ;">ایمیل</label>
-                                    <input id="email" class="form-control form-control-rounded" type="email">
+                                    <input asp-for="Email" class="form-control form-control-rounded" type="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="password" style="float:right ;">پسورد</label>
-                                    <input id="password" class="form-control form-control-rounded" type="password">
+                                    <input asp-for="Pass" class="form-control form-control-rounded" type="password">
                                 </div>
                                 <div class="form-group">
                                     <label for="repassword" style="float:right ;"> تکرار پسورد</label>
-                                    <input id="repassword" class="form-control form-control-rounded" type="password">
+                                    <input asp-for="Pass" class="form-control form-control-rounded" type="password">
                                 </div>
                                 <div class="form-group">
                                     <label for="username" style="float:right ;">شماره تلفن</label>
-                                    <input id="username" class="form-control form-control-rounded" type="text">
+                                    <input asp-for="PhoneNumber" class="form-control form-control-rounded" type="text">
                                 </div>
                                 <button class="btn btn-primary btn-block btn-rounded mt-3">ثبت نام</button>
                             </form>

@@ -20,5 +20,9 @@ namespace Retirementfund_MVC.Controllers
         {
             return View();
         }
+        public JsonResult Fund(Models.FundModel fund)
+        {
+            return Json();
+        }
     }
 }
