@@ -23,14 +23,14 @@
                     <div class="p-4">
 
                         <h1 class="mb-3 text-18 text-center">ورود</h1>
-                        <form>
+                        <form asp-action="Signin">
                             <div class="form-group">
                                 <label for="email">ادرس ایمیل</label>
-                                <input id="email" class="form-control form-control-rounded" type="email">
+                                <input asp-for="Email" class="form-control form-control-rounded" type="email">
                             </div>
                             <div class="form-group">
                                 <label for="password">رمز کاربری</label>
-                                <input id="password" class="form-control form-control-rounded" type="password">
+                                <input asp-for="Pass" class="form-control form-control-rounded" type="password">
                             </div>
                             <button class="btn btn-rounded btn-primary btn-block mt-2">ورود</button>
 

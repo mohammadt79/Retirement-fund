@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Retirementfund_MVC.Data;
+using Retirementfund_MVC;
 
 namespace Retirementfund_MVC.Controllers
 {
@@ -14,10 +15,26 @@ namespace Retirementfund_MVC.Controllers
         {
             _context = context;
         }
-        public IActionResult Signin()
+        [HttpPost]
+        public ActionResult Signin(LoginView login)
         {
-            return View();
+            try
+            {
+
+              var userInfo=  _context.Users.Where(s=>s.Email==login.Email && s.Pass==login.Pass);
+                if(userInfo != null)
+                {
+
+                }
+                return Redirect("");
+            }
+            catch
+            {
+                return BadRequest();
+            }
+           
         }
+
         [HttpGet]
         public IActionResult SignUp()
         {
