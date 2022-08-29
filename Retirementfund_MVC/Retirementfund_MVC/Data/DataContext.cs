@@ -9,9 +9,10 @@ namespace Retirementfund_MVC.Data
     {
         public  DataContext(DbContextOptions<DataContext> options):base(options){}
         public DbSet<Models.Users> Users { get; set; }
-        public DbSet<Models.FundModel> FundModel { get; set; }
+        public DbSet<Models.FundModel> Fund { get; set; }
         public DbSet<Models.Request> Request { get; set; }
-        public DbSet<Models.TheConferenceModel> TheConferenceModel  { get; set; }
+        public DbSet<Models.TheConferenceModel> TheConference  { get; set; }
+        public DbSet<Models.AspUserLoginModel> AspUserLogin { get; set; }
 
     }
 }

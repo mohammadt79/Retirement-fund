@@ -1,5 +1,6 @@
 ﻿<!--=============== Left side End ================-->
 <!-- ============ Body content start ============= -->
+@model FundModel
 <div class="main-content-wrap sidenav-open d-flex flex-column">
     <div class="breadcrumb">
         <h1 style="direction:rtl ;">ثبت وام صندوق</h1>
@@ -13,48 +14,40 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="card-title mb-3">Form Inputs</div>
-                    <form>
+                    <form asp-action="Fund">
                         <div class="row">
                             <div class="col-md-6 form-group mb-3">
                                 <label for="firstName1">نام صندوق</label>
-                                <input type="text" class="form-control" id="firstName1" placeholder="نام صندوق را وارد کنید">
+                                <input asp-for="Name" type="text" class="form-control"  placeholder="نام صندوق را وارد کنید">
                             </div>
 
                             <div class="col-md-6 form-group mb-3">
                                 <label for="lastName1">توضیحات</label>
-                                <input type="text" class="form-control" id="lastName1" placeholder="توضیحات را وارد کنید">
+                                <input asp-for="discription" type="text" class="form-control" placeholder="توضیحات را وارد کنید">
                             </div>
 
                             <div class="col-md-6 form-group mb-3">
                                 <label for="exampleInputEmail1">مقدار وام موجود</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="مقدار وام را وارد کنید">
+                                <input asp-for="Value"  class="form-control" placeholder="مقدار وام را وارد کنید">
                                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                             </div>
 
                             <div class="col-md-6 form-group mb-3">
                                 <label for="phone">تعداد افراد</label>
-                                <input class="form-control" id="phone" placeholder="تعداد افرادی که میتوانند از وام استفاده کنند را وارد کنید">
+                                <input asp-for="Number" class="form-control"  placeholder="تعداد افرادی که میتوانند از وام استفاده کنند را وارد کنید">
                             </div>
 
-                            <div class="col-md-6 form-group mb-3">
+                           @* <div class="col-md-6 form-group mb-3">
                                 <label for="credit1">حچم</label>
-                                <input class="form-control" id="credit1" placeholder="حجم وام را وارد کنید">
+                                <input asp-for="FirstName" class="form-control"  placeholder="حجم وام را وارد کنید">
                             </div>
-
+*@
                             <div class="col-md-6 form-group mb-3">
-                                <label for="picker2">تاریخ شروع</label>
-                                <input id="picker2" class="form-control" placeholder="yyyy-mm-dd" name="dp">
+                                <label for="picker2">تاریخ </label>
+                                <input asp-for="date"  class="form-control" placeholder="yyyy-mm-dd" name="dp">
                             </div>
-
-                            <div class="col-md-6 form-group mb-3">
-                                <label for="picker2">تاریخ پایان</label>
-                                <input id="picker2" class="form-control" placeholder="yyyy-mm-dd" name="dp">
-                            </div>
-
-
-
                             <div class="col-md-12">
-                                <button class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">ثبت</button>
                             </div>
                         </div>
                     </form>

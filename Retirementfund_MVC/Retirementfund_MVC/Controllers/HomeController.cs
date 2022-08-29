@@ -27,7 +27,7 @@ namespace Retirementfund_MVC.Controllers
         public IActionResult Index()
         {
            
-            ViewBag.Emp_data= _context.TheConferenceModel.ToList();
+            ViewBag.Emp_data= _context.TheConference.ToList();
             return View() ;
         }
        

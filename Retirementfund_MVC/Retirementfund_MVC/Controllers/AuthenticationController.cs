@@ -27,6 +27,7 @@ namespace Retirementfund_MVC.Controllers
         public JsonResult SignUp(Models.Users users)
         {
             try {
+               
                 var data = new Models.Users
                 {
                     FirstName = users.FirstName,
