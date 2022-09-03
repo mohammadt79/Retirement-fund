@@ -1,4 +1,26 @@
 ﻿@using Retirementfund_MVC.Controllers
+@using Retirementfund_MVC.Services
+
+@{
+    var _token = Context.Request.Cookies["access_token"];
+    var _authTokensCache = Context.RequestServices.GetService(typeof(AuthTokenCache)) as AuthTokenCache;
+    bool isAuthenticate = false;
+    bool isAuthorize = false;
+    var user = new Users();
+    if (_token != null)
+    {
+        user = _authTokensCache.Get(_token);
+        if (user != null)
+        {
+            if (user.Admin)
+            {
+                isAuthorize = true;
+            }
+            isAuthenticate = true;
+        }
+
+    }
+}
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
@@ -173,7 +195,7 @@
             <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
                 <ul class="navigation-left">
                     <li class="nav-item" data-item="sessions">
-                        <a class="nav-item-hold" >
+                        <a class="nav-item-hold">
                             <i class="nav-icon i-Administrator"></i>
                             <span class="nav-text">احراز هویت</span>
                         </a>
@@ -187,15 +209,16 @@
                         </a>
                         <div class="triangle"></div>
                     </li>
-
+                      @if (isAuthorize)
+                {
                     <li class="nav-item" data-item="AdminPanel">
-                        <a class="nav-item-hold" >
+                        <a class="nav-item-hold">
                             <i class="nav-icon i-Suitcase"></i>
                             <span class="nav-text">پلن ادمین</span>
                         </a>
                         <div class="triangle"></div>
                     </li>
-
+                }
                 </ul>
             </div>
 
@@ -214,18 +237,26 @@
                             <span class="item-name">ثبت درخواست</span>
                         </a>
                     </li>
-                  
+
                 </ul>
 
                 <ul class="childNav" data-parent="sessions">
+                    @if (!isAuthenticate)
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="Authentication" asp-action="Signin">
+                                <i class="nav-icon i-Checked-User"></i>
+                                <span class="item-name">ورود</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">@user.FirstName +  + @user.LastName گرامی خوش آمدید</li>
+                    }
+
                     <li class="nav-item">
-                        <a asp-controller="Authentication" asp-action="Signin">
-                            <i class="nav-icon i-Checked-User"></i>
-                            <span class="item-name">ورود</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Authentication"  asp-action="SignUp">
+                        <a asp-controller="Authentication" asp-action="SignUp">
                             <i class="nav-icon i-Add-User"></i>
                             <span class="item-name">عضویت</span>
                         </a>
@@ -236,33 +267,46 @@
                             <span class="item-name">فراموشی پسورد</span>
                         </a>
                     </li>
+                     @if (isAuthenticate)
+                    {
+                      <li class="nav-item">
+                        <a href="forgot.html">
+                            <i class="nav-icon i-Find-User"></i>
+                            <span class="item-name">خروج</span>
+                        </a>
+                    </li>
+                    }
                 </ul>
-                <ul class="childNav" data-parent="AdminPanel">
-                    <li class="nav-item">
-                        <a asp-controller="Admin" asp-action="Fund">
-                            <i class="nav-icon i-Receipt-4"></i>
-                            <span class="item-name">صندوق</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Admin" asp-action="Confrance">
-                            <i class="nav-icon i-Receipt-4"></i>
-                            <span class="item-name">کنفرانس</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Admin" asp-action="CRequest">
-                            <i class="nav-icon i-Receipt-4"></i>
-                            <span class="item-name">برسی در خواست ها</span>
-                        </a>
-                    </li>
-                </ul>
+                @if (isAuthorize)
+                {
+                    <ul class="childNav" data-parent="AdminPanel">
+                        <li class="nav-item">
+                            <a asp-controller="Admin" asp-action="Fund">
+                                <i class="nav-icon i-Receipt-4"></i>
+                                <span class="item-name">صندوق</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Admin" asp-action="Confrance">
+                                <i class="nav-icon i-Receipt-4"></i>
+                                <span class="item-name">کنفرانس</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Admin" asp-action="CRequest">
+                                <i class="nav-icon i-Receipt-4"></i>
+                                <span class="item-name">برسی در خواست ها</span>
+                            </a>
+                        </li>
+                    </ul>
+                }
+
             </div>
             <div class="sidebar-overlay"></div>
         </div>
         <!--=============== Left side End ================-->
-    <!-- ============ Body content start ============= -->
-    
+        <!-- ============ Body content start ============= -->
+
         <div class="main-content-wrap sidenav-open d-flex flex-column">
             <div class="breadcrumb">
                 <h1 class="mr-2">Blank Page</h1>

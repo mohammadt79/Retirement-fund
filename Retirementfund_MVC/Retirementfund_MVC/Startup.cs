@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using  Microsoft.EntityFrameworkCore;
 using Retirementfund_MVC.Data;
-
+using Retirementfund_MVC.Services;
 
 namespace Retirementfund_MVC
 {
@@ -34,6 +34,7 @@ namespace Retirementfund_MVC
                 options.UseSqlServer(ConnectionString)
 
             );
+            services.AddTransient<AuthTokenCache>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

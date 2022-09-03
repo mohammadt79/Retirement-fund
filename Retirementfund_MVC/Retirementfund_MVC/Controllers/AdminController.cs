@@ -4,8 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Retirementfund_MVC.Data;
+using Retirementfund_MVC.Middlewares;
+
 namespace Retirementfund_MVC.Controllers
 {
+
+    [RFAuthorize]
     public class AdminController : Controller
     {
         private readonly DataContext _context;
@@ -18,6 +22,7 @@ namespace Retirementfund_MVC.Controllers
             return View();
         }
         [HttpPost]
+       
         public JsonResult Confrance(Models.TheConferenceModel Conference)
         {
             var data = new Models.TheConferenceModel

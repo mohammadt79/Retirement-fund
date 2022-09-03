@@ -5,16 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Retirementfund_MVC.Data;
 using Retirementfund_MVC;
-
+using Microsoft.AspNetCore.Http;
+using Retirementfund_MVC.Services;
 
 namespace Retirementfund_MVC.Controllers
 {
     public class AuthenticationController : Controller
     {
         private readonly DataContext _context;
-        public AuthenticationController(DataContext context)
+        private readonly AuthTokenCache _authTokenCache;
+        public AuthenticationController(DataContext context, AuthTokenCache authTokenCache)
         {
             _context = context;
+            _authTokenCache = authTokenCache;   
         }
         [HttpGet]
         public IActionResult Signin()
@@ -27,13 +30,23 @@ namespace Retirementfund_MVC.Controllers
             try
             {
 
-             var userInfo= _context.Users.Where(s=>s.Email==login.Email && s.Pass==login.Pass).ToList();
-                if(userInfo != null)
+             var userInfo= _context.Users.Where(s=>s.Email==login.Email && s.Pass==login.Pass).SingleOrDefault();
+                if(userInfo !=null )
                 {
-                    HttpContext.Response.Cookies.Append("access_token", , new CookieOptions { HttpOnly = true });
-                    userInfo[0].Admin;   
+                  
+                        var guid =  Guid.NewGuid().ToString();
+                        HttpContext.Response.Cookies.Append("access_token", guid, new CookieOptions { HttpOnly = true });
+                        _authTokenCache.Set(userInfo, guid);
+                   
+                    return Redirect("/");
                 }
-                return Redirect("");
+                else
+                {
+
+                    ViewBag.error = "نام کاربری و رمز عبور اشتباه است ";
+                    return Redirect("/Authentication/Signin");
+                }
+              
             }
             catch
             {
