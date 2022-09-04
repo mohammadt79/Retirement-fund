@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Retirementfund_MVC.Models;
+using Retirementfund_MVC.Controllers;
+using Retirementfund_MVC.Services;
 using Retirementfund_MVC.Data;
 
 namespace Retirementfund_MVC.Controllers
@@ -13,11 +15,14 @@ namespace Retirementfund_MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AuthTokenCache _authTokenCache;
         private readonly DataContext _context;
-        public HomeController(ILogger<HomeController> logger,DataContext context)
+
+        public HomeController(ILogger<HomeController> logger,DataContext context,AuthTokenCache auth)
         {
             _logger = logger;
             _context = context;
+            _authTokenCache = auth;
         }
         //public void HomeService(DataContext context)
         //{
@@ -31,11 +36,30 @@ namespace Retirementfund_MVC.Controllers
             return View() ;
         }
        
-
+        [HttpGet]
         public IActionResult RegisterRequest()
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult RegisterRequest(Request request)
+        {
+            var user = new Users();
+            user = _authTokenCache.Get(HttpContext.Request.Cookies["access_token"]);
+            var data = new Models.Request
+            {
+                Type = request.Type,
+                discription = request.discription,
+                price = request.price,
+                UserId=user.Id,
+                DateTime = request.DateTime,
+                
+            };
+            _context.Request.Add(data);
+            _context.SaveChanges();
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

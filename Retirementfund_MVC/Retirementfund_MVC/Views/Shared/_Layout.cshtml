@@ -18,7 +18,6 @@
             }
             isAuthenticate = true;
         }
-
     }
 }
 <!DOCTYPE html>
@@ -231,13 +230,15 @@
                             <span class="item-name">خانه</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a asp-controller="Home" asp-action="RegisterRequest">
-                            <i class="nav-icon i-Add-File"></i>
-                            <span class="item-name">ثبت درخواست</span>
-                        </a>
-                    </li>
-
+                    @if (isAuthenticate)
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="RegisterRequest">
+                                <i class="nav-icon i-Add-File"></i>
+                                <span class="item-name">ثبت درخواست</span>
+                            </a>
+                        </li>
+                    }
                 </ul>
 
                 <ul class="childNav" data-parent="sessions">

@@ -1,4 +1,19 @@
-﻿ 
+﻿@using Retirementfund_MVC.Controllers
+@using Retirementfund_MVC.Services
+@model Request 
+@{
+    var _token = Context.Request.Cookies["access_token"];
+    var _authTokensCache = Context.RequestServices.GetService(typeof(AuthTokenCache)) as AuthTokenCache;
+    var userId = new Users();
+
+    userId = _authTokensCache.Get(_token);
+    if (userId != null)
+    {
+          ViewBag.UserId = userId.Id;
+ 
+    }
+
+}
         <!--=============== Left side End ================-->
         <!-- ============ Body content start ============= -->
         <div class="main-content-wrap sidenav-open d-flex flex-column">
@@ -14,27 +29,27 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="card-title mb-3">Form Inputs</div>
-                            <form>
+                            <form asp-action="RegisterRequest">
                                 <div class="row">
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="firstName1">توضیح علت درخواست</label>
-                                        <input type="text" class="form-control" id="firstName1" placeholder="Enter your first name">
+                                        <input asp-for="discription" type="text" class="form-control" id="firstName1" placeholder="Enter your first name">
                                     </div>
 
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="lastName1">میزان وام درخواستی</label>
-                                        <input type="text" class="form-control" id="lastName1" placeholder="Enter your last name">
+                                        <input asp-for="price" type="text" class="form-control" id="lastName1" placeholder="Enter your last name">
                                     </div>
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="picker2">تاریخ درخواست</label>
-                                        <input id="picker2" class="form-control" placeholder="yyyy-mm-dd" name="dp">
+                                        <input asp-for="DateTime" id="picker2" class="form-control" placeholder="yyyy-mm-dd" name="dp">
                                     </div>
 
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="picker1">نوع درخواست</label>
-                                        <select class="form-control">
-                                            <option>صندوق</option>
-                                            <option>همایش</option>
+                                        <select class="form-control" asp-for="Type">
+                                            <option value=0>همایش</option>
+                                            <option value=1>صندوق</option>
                                          
                                         </select>
                                     </div>
