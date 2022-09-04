@@ -38,8 +38,7 @@ namespace Retirementfund_MVC.Controllers
             return Json(data: Ok());
 
         }
-        [HttpGet]
-        public IActionResult CRequest()
+        public IActionResult CRequestCheck()
         {
 
             var viewModel = _context.Request.Join(_context.Users,
@@ -59,13 +58,18 @@ namespace Retirementfund_MVC.Controllers
 
             return View(viewModel);
         }
-        [HttpPost]
-        public IActionResult CRequest()
+
+        [HttpGet]
+        [Route("CRequest/{RequestId}/{IsAccept}")]
+        public IActionResult CRequest([FromRoute] int RequestId,[FromRoute] bool IsAccept)
         {
+            var request = _context.Request.Where(item => item.Id == RequestId).FirstOrDefault();
+            request.adminCheck = IsAccept;
+            _context.Request.Update(request);
+            _context.SaveChanges();
 
-          
 
-            return View();
+            return RedirectToAction("CRequestCheck");
         }
         [HttpGet]
         public IActionResult Fund()

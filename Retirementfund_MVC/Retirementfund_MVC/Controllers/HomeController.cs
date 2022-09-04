@@ -28,10 +28,22 @@ namespace Retirementfund_MVC.Controllers
         //{
         //    _context = context;
         //}
+        public IActionResult requestSituation()
+        {
+            var user = new Users();
+            user = _authTokenCache.Get(HttpContext.Request.Cookies["access_token"]);
+            if (user != null)
+            {
+                var req = _context.Request.Where(req => req.UserId == user.Id).FirstOrDefault();
+                return View(req.adminCheck);
 
+            }
+            return View();
+        }
         public IActionResult Index()
         {
-           
+            
+          
             ViewBag.Emp_data= _context.TheConference.ToList();
             return View() ;
         }

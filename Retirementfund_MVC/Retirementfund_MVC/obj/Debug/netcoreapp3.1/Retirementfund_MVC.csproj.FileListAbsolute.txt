@@ -285,7 +285,6 @@ C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirem
 C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Retirementfund_MVC.TagHelpers.output.cache
 C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Retirementfund_MVC.RazorCoreGenerate.cache
 C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Confrance.cshtml.g.cs
-C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CRequest.cshtml.g.cs
 C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Fund.cshtml.g.cs
 C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\Signin.cshtml.g.cs
 C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\SignUp.cshtml.g.cs
@@ -304,3 +303,4 @@ C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirem
 C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Retirementfund_MVC.pdb
 C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Retirementfund_MVC.genruntimeconfig.cache
 C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\401.cshtml.g.cs
+C:\Users\MohammadTPc\Documents\GitHub\Retirement-fund\Retirementfund_MVC\Retirementfund_MVC\obj\Debug\netcoreapp3.1\Razor\Views\Admin\CRequestCheck.cshtml.g.cs

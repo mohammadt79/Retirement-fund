@@ -14,7 +14,7 @@ namespace Retirementfund_MVC.Models
         public string price { get; set; }
         public int? UserId { get; set; }
         public DateTime DateTime { get; set; }
-        public bool adminCheck { get; set; }
+        public bool? adminCheck { get; set; } = null;
         [ForeignKey("UserId")]
         public virtual Users Users { get; set; }
     }

@@ -59,15 +59,14 @@
                                         <td><span class="badge badge-success">@item.adminCheck</span></td>
                                         <td>@item.DateTime</td>
                                         <td>
-                                            <form>
-                                            <button type="button" class="btn btn-success " value="1">
+
+                                            <a href="/CRequest/@item.Id/true"  class="btn btn-success " >
                                                 <i class="nav-icon i-Pen-2 "></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger " value="0">
+                                            </a>
+                                            <a href="/CRequest/@item.Id/false" class="btn btn-danger " >
                                                 <i class="nav-icon i-Close-Window "></i>
-                                            </button>
-                                            <input type="hidden" asp-action="">
-                                            </form>
+                                            </a>
+                                            
                                         </td>
                                     </tr>
                                 }
