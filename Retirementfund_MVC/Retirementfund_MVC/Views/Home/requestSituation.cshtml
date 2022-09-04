@@ -4,3 +4,14 @@
 @{
 }
 @model  Request
+
+
+@if(ViewBag.Si==true){
+    <h1>چک شد</h1>
+}
+else if(ViewBag.Si==false){
+      <h1>چک شد</h1>
+}
+else{
+  <h1>چک نشد</h1>
+}

@@ -35,7 +35,7 @@ namespace Retirementfund_MVC.Controllers
             if (user != null)
             {
                 var req = _context.Request.Where(req => req.UserId == user.Id).FirstOrDefault();
-                return View(req.adminCheck);
+                ViewBag.Si=req.adminCheck;
 
             }
             return View();
