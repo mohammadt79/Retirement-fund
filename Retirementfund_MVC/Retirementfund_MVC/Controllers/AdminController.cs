@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Retirementfund_MVC.Data;
 using Retirementfund_MVC.Middlewares;
-
+using Retirementfund_MVC.Models;
 namespace Retirementfund_MVC.Controllers
 {
 
@@ -38,8 +38,33 @@ namespace Retirementfund_MVC.Controllers
             return Json(data: Ok());
 
         }
+        [HttpGet]
         public IActionResult CRequest()
         {
+
+            var viewModel = _context.Request.Join(_context.Users,
+                requ => requ.UserId,
+                user => user.Id,
+                (requ, user) => new AdminCheckUserView
+                {
+                    Id=requ.Id,
+                    Type = requ.Type,
+                    discription = requ.discription,
+                    price = requ.price,
+                    Username=user.FirstName+user.LastName,
+                    DateTime = requ.DateTime,
+                    adminCheck = requ.adminCheck,
+                }).ToList();
+
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult CRequest()
+        {
+
+          
+
             return View();
         }
         [HttpGet]

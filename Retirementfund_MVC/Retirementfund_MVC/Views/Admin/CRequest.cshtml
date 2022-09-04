@@ -1,4 +1,8 @@
-﻿
+﻿@model List< AdminCheckUserView>
+@using Retirementfund_MVC.Controllers
+@using Retirementfund_MVC.Services
+@{
+}
 
 
     <!-- ============ Body content start ============= -->
@@ -40,66 +44,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                   @foreach (var item in Model)
+                                      {
+                                              
+
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>Smith Doe</td>
+                                        <td>@item.Username </td>>
                                         <td>
-
-                                            <img class="rounded-circle m-0 avatar-sm-table " src="/assets/images/faces/1.jpg" alt="">
-
+                                            @item.discription
                                         </td>
 
-                                        <td>Smith@gmail.com</td>
-                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>@item.price</td>
+                                        <td><span class="badge badge-success">@item.adminCheck</span></td>
+                                        <td>@item.DateTime</td>
                                         <td>
-                                            <button type="button" class="btn btn-success ">
+                                            <form>
+                                            <button type="button" class="btn btn-success " value="1">
                                                 <i class="nav-icon i-Pen-2 "></i>
                                             </button>
-                                            <button type="button" class="btn btn-danger ">
+                                            <button type="button" class="btn btn-danger " value="0">
                                                 <i class="nav-icon i-Close-Window "></i>
                                             </button>
+                                            <input type="hidden" asp-action="">
+                                            </form>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jhon Doe</td>
-                                        <td>
-
-                                            <img class="rounded-circle m-0 avatar-sm-table " src="/assets/images/faces/1.jpg" alt="">
-
-                                        </td>
-
-                                        <td>Jhon@gmail.com</td>
-                                        <td><span class="badge badge-info">Pending</span></td>
-                                        <td>
-                                            <button type="button" class="btn btn-success ">
-                                                <i class="nav-icon i-Pen-2 "></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger ">
-                                                <i class="nav-icon i-Close-Window "></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Alex</td>
-                                        <td>
-
-                                            <img class="rounded-circle m-0 avatar-sm-table " src="/assets/images/faces/1.jpg" alt="">
-
-                                        </td>
-
-                                        <td>Otto@gmail.com</td>
-                                        <td><span class="badge badge-warning">Not Active</span></td>
-                                        <td>
-                                            <button type="button" class="btn btn-success ">
-                                                <i class="nav-icon i-Pen-2 "></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger ">
-                                                <i class="nav-icon i-Close-Window "></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                }
+                                   
                                 </tbody>
                             </table>
                         </div>
